@@ -90,9 +90,9 @@ void opcontrol() {
 		so, if I want the motor to run forward, I need to give it positive values
 		hence, the extra negative sign (e.g,. -(-127))
 		*/
-		int y_dir = -m_controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-		int x_dir = -m_controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-		int rot = -m_controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+		int y_dir = m_controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+		int x_dir = m_controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+		int rot = m_controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
 		m_topLeftMotor.move_velocity(y_dir + x_dir + rot);
 		m_botLeftMotor.move_velocity(y_dir - x_dir + rot);
