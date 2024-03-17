@@ -86,6 +86,7 @@ void opcontrol() {
 
 	// instantiating a Controller object
 	pros::Controller m_controller = pros::Controller(pros::E_CONTROLLER_MASTER);
+	const int kDeadband = 20;
 
 	while (true) {	// forces the code to run forever
 		/* negative sign required since pushing the left_y stick up gives a value of -127
@@ -100,9 +101,21 @@ void opcontrol() {
 		// m_botLeftMotor.move_velocity(y_dir - x_dir + rot);
 		// m_topRightMotor.move_velocity(-y_dir + x_dir + rot);
 		// m_botRightMotor.move_velocity(-y_dir - x_dir + rot);
-		
+
+		y_dir = DeadbandValue(y_dir, kDeadband);
+		x_dir = DeadbandValue(x_dir, kDeadband);
+		rot = DeadbandValue(rot, kDeadband);
+
+
 		m_drive.XDrive(y_dir, x_dir, rot);
 
 		pros::delay(20); // Run for 20 ms then update
 	}
+}
+
+int DeadbandValue(int val, int deadband) {
+	if (abs(val) < deadband) {
+		return 0;
+	}
+	return val;
 }

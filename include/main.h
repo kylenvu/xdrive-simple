@@ -67,6 +67,8 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+
+int DeadbandValue(int val, int deadband);
 #ifdef __cplusplus
 }
 #endif
@@ -76,6 +78,7 @@ void opcontrol(void);
  * You can add C++-only headers here
  */
 //#include <iostream>
+#include <cmath>
 #endif
 
 #endif  // _PROS_MAIN_H_
