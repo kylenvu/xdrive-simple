@@ -76,10 +76,12 @@ void autonomous() {}
 void opcontrol() {
 	// Setting up the hardware for our robot
 	// instantiating (making an instance of) motors for x-drive
-	pros::Motor m_botLeftMotor = pros::Motor(20);
-	pros::Motor m_topLeftMotor = pros::Motor(11);
-	pros::Motor m_botRightMotor = pros::Motor(10);
-	pros::Motor m_topRightMotor = pros::Motor(1);
+	// pros::Motor m_botLeftMotor = pros::Motor(20);
+	// pros::Motor m_topLeftMotor = pros::Motor(11);
+	// pros::Motor m_botRightMotor = pros::Motor(10);
+	// pros::Motor m_topRightMotor = pros::Motor(1);
+
+	Drivetrain m_drive = Drivetrain(20, 11, 10, 1);
 
 
 	// instantiating a Controller object
@@ -94,10 +96,12 @@ void opcontrol() {
 		int x_dir = m_controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 		int rot = m_controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
-		m_topLeftMotor.move_velocity(y_dir + x_dir + rot);
-		m_botLeftMotor.move_velocity(y_dir - x_dir + rot);
-		m_topRightMotor.move_velocity(-y_dir + x_dir + rot);
-		m_botRightMotor.move_velocity(-y_dir - x_dir + rot);
+		// m_topLeftMotor.move_velocity(y_dir + x_dir + rot);
+		// m_botLeftMotor.move_velocity(y_dir - x_dir + rot);
+		// m_topRightMotor.move_velocity(-y_dir + x_dir + rot);
+		// m_botRightMotor.move_velocity(-y_dir - x_dir + rot);
+		
+		m_drive.XDrive(y_dir, x_dir, rot);
 
 		pros::delay(20); // Run for 20 ms then update
 	}
