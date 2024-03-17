@@ -39,7 +39,7 @@
 /**
  * You should add more #includes here
  */
-//#include "okapi/api.hpp"
+#include "okapi/api.hpp"
 #include "subsystems/Drivetrain.hpp"
 
 /**
@@ -68,7 +68,7 @@ void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
 
-int DeadbandValue(int val, int deadband);
+// int DeadbandValue(int val, int deadband);
 #ifdef __cplusplus
 }
 #endif
@@ -78,7 +78,7 @@ int DeadbandValue(int val, int deadband);
  * You can add C++-only headers here
  */
 //#include <iostream>
-#include <cmath>
+// #include <cmath>
 #endif
 
 #endif  // _PROS_MAIN_H_
